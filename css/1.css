@@ -1,0 +1,128 @@
+
+body {
+    background-color: #111827; 
+    color: #e5e7eb; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}
+
+#player-card {
+    background-color: #1f2937;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); 
+    border-radius: 0.75rem; 
+    width: 100%;
+    max-width: 24rem; 
+    padding: 1.5rem; 
+    box-sizing: border-box; 
+}
+
+#track-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#album-art {
+    width: 12rem;
+    height: 12rem; 
+    border-radius: 0.5rem; 
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    object-fit: cover;
+}
+
+#track-details {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+#song-title {
+    font-size: 1.25rem; 
+    font-weight: 600; 
+    color: #ffffff; 
+    margin: 0;
+}
+
+#song-artist {
+    font-size: 0.875rem; 
+    color: #9ca3af;
+    margin: 0.25rem 0 0 0;
+}
+
+#progress-container {
+    margin-top: 1rem;
+}
+
+#progress-bar-track {
+    width: 100%;
+    height: 4px;
+    background: #006aff; 
+    border-radius: 5px;
+}
+
+#progress-bar-fill {
+    width: 0%; 
+    height: 100%;
+    background: #f9fafb; 
+    border-radius: 5px;
+}
+
+#time-display {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: #9ca3af; 
+    margin-top: 0.5rem;
+}
+
+#controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.control-button {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: #9ca3af; 
+    transition: color 200ms;
+    margin: 0 0.75rem; 
+}
+
+.control-button:hover {
+    color: #ffffff; 
+}
+
+.icon {
+    width: 1.5rem;
+    height: 1.5rem; 
+}
+
+#play-pause-button {
+    background-color: #f3f4f6; 
+    color: #111827; 
+    border-radius: 9999px; 
+    width: 3.5rem; 
+    height: 3.5rem; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    transition: background-color 200ms;
+}
+
+#play-pause-button:hover {
+    background-color: #ffffff; 
+    color: #111827; 
+}
+
+.icon-main {
+    width: 2rem; 
+    height: 2rem; 
+}
