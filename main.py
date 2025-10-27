@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return send_from_directory(HTML_DIR, "1.html")  # serves html/1.html
+    return send_from_directory(HTML_DIR, "P.html")  # serves html/1.html
 
 @app.route("/css/<path:filename>")
 def serve_css(filename):

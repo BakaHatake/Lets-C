@@ -1,0 +1,47 @@
+body{
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    background: #3657a4;
+    width: min(92vh,300px);
+    border-radius: 50px;
+    padding: 10px;
+    box-shadow: 0px 5px 30px rgb(217, 146, 146), 
+            0px -5px 30px rgb(217, 146, 146);
+    transition: transform 0.3s ease,background 0.3s ease;
+}
+
+.main:hover{
+    transform: scale(1.2);
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    color: #000;
+    font-weight: 600;
+    font-size: 1.2rem;
+    align-items: center;
+    justify-content: center;
+    width: min(50vh,150px);
+    border-radius: 20px;
+    border: #000 1px solid;
+    padding: 5px;
+    transition: transform 0.3s ease,background 0.2s ease;
+    --btn: #3657a4;
+    cursor: pointer; 
+    user-select: none;
+}
+
+.btn:hover{
+    transform: scale(1.2);
+    background :var(--btn);
+}
