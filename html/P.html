@@ -3,15 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" href="/css/p.css">
+    <title>To-Do</title>
 </head>
 <body>
-    <div class="main" id="m1">
-        <div class="btn" id="b1">
-            <span>Change the color</span>
-        </div>
+    <div class="app">
+    <div class="main">
+        <h1>Weekly Planner</h1>
     </div>
-    <script src="/js/p.js"></script>
+    <div class="body">
+        <h2>TO-DO LIST</h2></div>
+    <div class="week">
+      <div class="day" data-day="Mon">Monday</div>
+      <div class="day" data-day="Tue">Tuesday</div>
+      <div class="day" data-day="Wed">Wednesday</div>
+      <div class="day" data-day="Thu">Thrusday</div>
+      <div class="day" data-day="Fri">Friday</div>
+      <div class="day" data-day="Sat">Saturday</div>
+      <div class="day" data-day="Sun">Sunday</div>
+    </div>
+
+    <section class="activity" id="activity">
+        <header class="activity__header">
+            <h2 id="act-title">Activity--Monday</h2>
+            <button class="activity__close" id="act-close" aria-label="Close">X</button>
+        </header>
+        <div class="activity__body">
+            <label>Form</label>
+            <input type="text" placeholder="From">
+            <label>To</label>
+            <input type="text" placeholder="To">
+            <label>Notes</label>
+            <textarea rows="4" placeholder="Tasks"></textarea>
+        </div>
+    </section>
+    </div>
+<script src="/js/p.js"></script>
 </body>
 </html>
