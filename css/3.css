@@ -1,0 +1,261 @@
+/* General Body and Font Styles */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #a77dff 0%, #7d44ff 100%); /* Purple gradient background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff; /* Default text color for the planner wrapper */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Planner Wrapper - Glassmorphism Container */
+.planner-wrapper {
+    background: rgba(255, 255, 255, 0.15); /* Transparent white background */
+    border-radius: 25px;
+    padding: 30px;
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2); /* Soft shadow */
+    max-width: 90%; /* Max width for responsiveness */
+    width: 1000px; /* Specific width */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative; /* For absolute positioning of popups */
+    overflow: hidden; /* Hide overflowing popups when closed */
+}
+
+/* Planner Header */
+.planner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.planner-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.planner-title .icon {
+    font-size: 1.5rem;
+    color: #ffd700; /* Gold for sparkle */
+}
+
+.theme-toggle .icon {
+    font-size: 1.5rem;
+    color: #fddb3a; /* Yellow for moon */
+    cursor: pointer;
+}
+
+/* Day Cards Grid */
+.day-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    justify-content: center; /* Center cards in grid */
+}
+
+/* Individual Day Card Container (for checkbox + card + popup) */
+.day-card-container {
+    position: relative; /* Crucial for positioning the popup */
+    perspective: 1000px; /* For 3D transform effect */
+}
+
+/* Hide the actual checkbox */
+.day-toggle-checkbox {
+    display: none;
+}
+
+/* Day Card Styling */
+.day-card {
+    background: rgba(255, 255, 255, 0.1); /* Slightly more opaque for cards */
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transitions for hover/active states */
+    height: 150px; /* Fixed height for uniformity */
+    user-select: none; /* Prevent text selection */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.day-card:hover {
+    background: rgba(255, 255, 255, 0.25); /* Lighter on hover */
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+}
+
+/* Day Card Contents */
+.day-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #fddb3a; /* Default icon color */
+}
+
+/* Specific icon colors (as seen in image) */
+.day-card-container:nth-child(1) .day-icon { color: #fddb3a; /* Monday - Sun */ }
+.day-card-container:nth-child(2) .day-icon { color: #ff99e6; /* Tuesday - Flower */ }
+.day-card-container:nth-child(3) .day-icon { color: #ffd700; /* Wednesday - Bolt */ }
+.day-card-container:nth-child(4) .day-icon { color: #78ff4d; /* Thursday - Leaf */ }
+.day-card-container:nth-child(5) .day-icon { color: #ff6f61; /* Friday - Sparkles/Champagne */ }
+.day-card-container:nth-child(6) .day-icon { color: #fddb3a; /* Saturday - Moon */ }
+.day-card-container:nth-child(7) .day-icon { color: #78ff4d; /* Sunday - Seedling */ }
+
+
+.day-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.day-desc {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Activity Popup Styling */
+.activity-popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Cover the entire day-card-container */
+    background: rgba(255, 255, 255, 0.95); /* Opaque white background for popup */
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    color: #333; /* Dark text for readability on white background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Align text to start */
+    opacity: 0;
+    pointer-events: none; /* Make it unclickable when hidden */
+    transform: rotateY(90deg); /* Start rotated for flip effect */
+    transform-origin: left center;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    z-index: 5; /* Ensure popup is above other cards */
+}
+
+.activity-popup h3 {
+    margin-bottom: 15px;
+    color: #6a0dad; /* A strong purple for headings */
+    font-size: 1.5rem;
+    width: 100%;
+    text-align: center;
+}
+
+.activity-popup p {
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+    width: 100%;
+}
+
+.activity-popup hr {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+    width: 80%;
+    align-self: center; /* Center the HR */
+}
+
+/* Checkbox Hack: When checkbox is checked, show the popup */
+.day-toggle-checkbox:checked + .day-card + .activity-popup {
+    opacity: 1;
+    pointer-events: all; /* Make it clickable when visible */
+    transform: rotateY(0deg); /* Flip back to normal */
+}
+
+/* Bonus: Dim the other cards when one is active (optional, but nice) */
+.day-toggle-checkbox:checked ~ .day-card { /* Target the day-card itself */
+    opacity: 0; /* Hide the card when its popup is open */
+    pointer-events: none;
+    transform: rotateY(-90deg); /* Flip it away */
+}
+
+/* Specific Font Awesome Icons (some need adjustment for older versions) */
+.fa-sparkles:before { content: "\f005"; } /* Placeholder, sparkle doesn't exist directly. Using star */
+.fa-flower:before { content: "\f781"; } /* Placeholder, flower doesn't exist directly. Using spa */
+.fa-champagne-glasses:before { content: "\f793"; } /* Specific icon */
+
+
+/* --- Media Queries for Responsiveness --- */
+@media (max-width: 768px) {
+    .planner-wrapper {
+        padding: 20px;
+        width: 95%; /* Make it slightly wider on smaller screens */
+    }
+
+    .planner-title {
+        font-size: 1.5rem;
+    }
+
+    .day-cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 15px;
+    }
+
+    .day-card {
+        height: 130px;
+        padding: 15px;
+    }
+
+    .day-icon {
+        font-size: 2rem;
+    }
+
+    .day-name {
+        font-size: 1rem;
+    }
+
+    .day-desc {
+        font-size: 0.8rem;
+    }
+
+    .activity-popup h3 {
+        font-size: 1.3rem;
+    }
+
+    .activity-popup p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .planner-wrapper {
+        border-radius: 15px;
+        padding: 15px;
+    }
+
+    .planner-title {
+        font-size: 1.3rem;
+        gap: 5px;
+    }
+
+    .planner-title .icon, .theme-toggle .icon {
+        font-size: 1.2rem;
+    }
+
+    .day-cards-grid {
+        grid-template-columns: 1fr; /* Stack cards vertically on very small screens */
+        gap: 10px;
+    }
+
+    .day-card {
+        height: 120px;
+    }
+}
