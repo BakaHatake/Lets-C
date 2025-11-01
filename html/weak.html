@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my weakly planner</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            /* background-color: rgb(172, 119, 221); */
+        }
+        .box{
+            width: 100px;
+            height: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(215, 217, 126, 0.957);
+            border: 2px solid black;
+            box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+            font-weight: bolder;
+            border-radius: 15px;
+            margin-bottom: 10px;
+        }
+        .cont1{
+            background-color: rgba(215, 217, 126, 0.957) ;
+            width:70vw;
+            height:20vh;
+            border-radius: 15px;
+            padding: 10px;
+        }
+        .ACTIVITY{
+            width: 95%;
+            height: 30px;
+            border-radius: 8px;
+            border: 0px solid black;
+            box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px;
+            /* margin:10PX */
+        }
+        .inside{
+            width: 25%;
+            height: 25px;
+            border-radius: 8px;
+            border: 0px solid black;
+            box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            font-size: 14px;
+            font-weight: bold;
+            padding: 5px;
+            margin-right:4rem;
+            
+        }
+    </style>
+</head>
+<body>
+      <center><h1>weekly planner</h1>
+        <h1>To-Do List</h1></center>
+        <div class="main">
+            <div class="box box1">
+                 <input type="checkbox" id="Monday" hidden>
+                 <label for="Monday">Monday</label>
+            </div>
+              <div class="cont cont1">
+                    <input class="ACTIVITY" type="text" placeholder="ACTIVITY"><br><br>
+                    <center>
+                    <input class="inside" type="text"  placeholder="FORM">
+                    <input class="inside" type="text" placeholder="TO">
+                    </center>
+            </div>
+        </div>
+</body>
+</html>
