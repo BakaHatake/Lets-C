@@ -18,20 +18,26 @@
             margin-bottom: 20px;
 
         }
+        .day-row{
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
         .box{
-            width: 100px;
+            width: 120px;
             height: 40px;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             border: 2px solid black;
             box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
             font-weight: bolder;
             border-radius: 15px;
-            margin-bottom: 10px;
+            margin: 0;
         }
             .box1{
+            
                 background-color: rgba(215, 217, 126, 0.957);
             }
             .box2{
@@ -53,10 +59,11 @@
                 background-color: rgb(230, 110, 74);
             }
         .cont{
-            width:70vw;
-            height:20vh;
+            flex: 1;
+            height:auto;
             border-radius: 15px;
             padding: 10px;
+            margin: 0;
         }
         .cont1{
             background-color: rgba(215, 217, 126, 0.957);
@@ -106,18 +113,19 @@
 <body>
       <center><h1>weekly planner</h1>
         <h1>To-Do List</h1></center>
-        <div class="main">
+        <div class="day-row">
             <div class="box box1">
                  <input type="checkbox" id="Monday" hidden>
                  <label for="Monday">Monday</label>
             </div>
               <div class="cont cont1">
                     <input class="ACTIVITY" type="text" placeholder="ACTIVITY"><br><br>
-                    <center>
+
                     <input class="inside" type="text"  placeholder="FORM">
                     <input class="inside" type="text" placeholder="TO">
-                    </center>
+              </div>
             </div>
+            <div class="day-row">
             <div class="box box2">
                  <input type="checkbox" id="tuesday" hidden>
                  <label for="tuesday">Tuesday</label>
@@ -129,6 +137,8 @@
                     <input class="inside" type="text" placeholder="TO">
                     </center>
             </div>
+        </div>
+            <div class="day-row">
             <div class="box box3">
                  <input type="checkbox" id="wednesday" hidden>
                  <label for="wednesday">wednesday</label>
@@ -140,6 +150,9 @@
                     <input class="inside" type="text" placeholder="TO">
                     </center>
             </div>
+            </div>
+            
+            <div class="day-row">
             <div class="box box4">
                  <input type="checkbox" id="thursday" hidden>
                  <label for="thursday">Thursday</label>
@@ -151,6 +164,10 @@
                     <input class="inside" type="text" placeholder="TO">
                     </center>
             </div>
+            </div>
+
+
+            <div class="day-row">
             <div class="box box5">
                  <input type="checkbox" id="friday" hidden>
                  <label for="friday">Friday</label>
@@ -162,6 +179,9 @@
                     <input class="inside" type="text" placeholder="TO">
                     </center>
             </div>
+            </div>
+            
+            <div class="day-row">
             <div class="box box6">
                  <input type="checkbox" id="saturday" hidden>
                  <label for="saturday">saturday</label>
@@ -173,6 +193,8 @@
                     <input class="inside" type="text" placeholder="TO">
                     </center>
             </div>
+            </div>
+            <div class="day-row">
             <div class="box box7">
                  <input type="checkbox" id="sunday" hidden>
                  <label for="sunday">sunday</label>
