@@ -53,3 +53,5 @@ keys.addEventListener('click', e => {
 clear.addEventListener('click', () => { expr = ''; setDisplay(''); });
 del.addEventListener('click', () => { expr = expr.slice(0, -1); setDisplay(expr); });
 eq.addEventListener('click', evaluate);
+
+
