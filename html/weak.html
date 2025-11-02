@@ -9,8 +9,34 @@
             box-sizing: border-box;
             /* background-color: rgb(172, 119, 221); */
         }
-        body{
-            background-color: blanchedalmond;
+        body {
+               margin: 0;
+               padding: 0;
+               position: relative;
+               background: linear-gradient(
+               135deg,
+               #0f0c29 0%,     /* deep indigo */
+               #302b63 35%,    /* rich purple */
+               #24243e 65%,    /* muted violet-blue */
+               #1b2735 100%    /* dark midnight blue */
+             );
+               background-attachment: fixed;
+               background-size: cover;
+               color:rgba(130, 92, 92, 0.932);
+               font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+               margin: 20px;
+               padding: 25px;
+               }
+        h1,h2{
+            /* position:fixed; */
+            color: white;
+            margin-top:-20px;
+        }
+        header{
+            margin-bottom: 40px;
+            border-bottom: 2px solid white;
+            padding-bottom:7px;
+
         }
         .cont{
             /* display: none; */
@@ -19,17 +45,19 @@
             justify-content: center;
             /* gap: 10px; */
             margin-bottom: 20px;
+            /* width: 100px; */
 
         }
         .day-row{
+            /* color: #ffffff; */
             display: flex;
             align-items: center;
             gap: 16px;
             margin-bottom: 24px;
         }
         .box{
-            width: 120px;
-            height: 40px;
+            width: 150px;
+            height: 80px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -40,26 +68,25 @@
             margin: 0;
         }
             .box1{
-            
-                background-color: rgba(215, 217, 126, 0.957);
+                background: linear-gradient(90deg, #ffe5e5 0%, #ff9a9a 50%, #ff4d4d 100%);
             }
             .box2{
-                background-color: #54fb94;
+                    background: linear-gradient(90deg, #e6f7ff 0%, #b3e5ff 50%, #80d4ff 100%);
             }
             .box3{
-                background-color: rgb(110, 227, 245);
+                background: linear-gradient(90deg, #fff0f5 0%, #ffcfe6 50%, #ff9ccf 100%); 
             }
             .box4{
-                background-color: rgba(60, 110, 227, 0.947);
+                    background: linear-gradient(90deg, #fff0e6 0%, #ffc9a9 50%, #ff9b73 100%);
             }
             .box5{
-                background-color: rgb(218, 50, 196);
+                        background: linear-gradient(90deg, #f6f0ff 0%, #d9c2ff 50%, #b388ff 100%);
             }
             .box6{
-                background-color: rgb(237, 40, 40);
+                      background: linear-gradient(90deg, #e0fff9 0%, #a0f0e8 50%, #64d9cf 100%);
             }
             .box7{
-                background-color: rgb(230, 110, 74);
+                  background: linear-gradient(135deg, #fffce5 0%, #fff2a8 50%, #ffeb70 100%);
             }
         .cont{
             display: none;
@@ -70,27 +97,59 @@
             margin: 0;
         }
         .cont1{
-            background-color: rgba(215, 217, 126, 0.957);
+            background: linear-gradient(180deg, #ff9a9a 0%, #ff4d4d 100%);
+            box-shadow:
+  0 0 10px rgba(255, 90, 90, 0.8),
+  0 0 25px rgba(255, 50, 50, 0.6);
+
         }
         .cont2{
-            background-color: #54fb94;
+                background: linear-gradient(180deg, #b3e5ff 0%, #80d4ff 100%);
+                box-shadow:
+  0 0 10px rgba(120, 200, 255, 0.8),
+  0 0 25px rgba(100, 180, 255, 0.6);
+
         }
         .cont3{
-            background-color: rgb(110, 227, 245);
+            background: linear-gradient(90deg, #fff0f5 0%, #ffcfe6 50%, #ff9ccf 100%);
+            box-shadow:
+  0 0 10px rgba(255, 160, 200, 0.8),
+  0 0 25px rgba(255, 120, 180, 0.6);
+
         }
         .cont4{
-            background-color: rgba(60, 110, 227, 0.947);
+                  background: linear-gradient(180deg, rgba(255,201,169,0.95) 0%, rgba(255,155,115,1) 100%);
+                  box-shadow:
+  0 0 10px rgba(255, 170, 120, 0.8),
+  0 0 25px rgba(255, 140, 90, 0.6);
+
+
         }
         .cont5{
-            background-color: rgb(218, 50, 196);
+              background: linear-gradient(180deg, rgba(179,136,255,0.95) 0%, rgba(217,194,255,1) 100%);
+              box-shadow:
+  0 0 10px rgba(200, 160, 255, 0.8),
+  0 0 25px rgba(179, 136, 255, 0.6);
+
         }
         .cont6{
-            background-color: rgb(237, 40, 40);
+              background: linear-gradient(180deg, rgba(160,240,232,0.95) 0%, rgba(100,217,207,1) 100%);
+              box-shadow:
+  0 0 10px rgba(160, 240, 232, 0.8),
+  0 0 25px rgba(100, 217, 207, 0.6);
+
+
         }
         .cont7{
-            background-color: rgb(230, 110, 74);
+              background: linear-gradient(180deg, #fff2a8 0%, #ffeb70 100%);
+              box-shadow:
+              0 0 10px rgba(255, 240, 150, 0.8),
+              0 0 25px rgba(255, 220, 60, 0.6);
+
         }
         .ACTIVITY{
+            filter: blur(.2px);
+            background: white;
             width: 95%;
             height: 30px;
             border-radius: 8px;
@@ -118,43 +177,47 @@
     </style>
 </head>
 <body>
+    <header>
+        <nav>
       <center><h1>weekly planner</h1>
-        <h1>To-Do List</h1></center>
+        <h2>⚡-- To-Do List --⚡</h2></center>
+        </nav>
+           </header>
         <div class="day-row">
             <!-- <div class="box box1"> -->
                  <input type="checkbox" id="Monday" hidden>
-                 <label for="Monday" class="box box1">Monday</label>
+                 <label for="Monday" class="box box1">Monday 🌅 </label>
             <!-- </div> -->
               <div class="cont cont1">
                     <input class="ACTIVITY" type="text" placeholder="ACTIVITY"><br><br>
-                  <center><input class="inside" type="text"  placeholder="FORM">
-                    <input class="inside" type="text" placeholder="TO">
+                  <center><input class="inside" type="time"  placeholder="FORM">
+                    <input class="inside" type="time" placeholder="TO">
                     </center> 
               </div>
             </div>
             <div class="day-row">
             <!-- <div class="box box2"> -->
                  <input type="checkbox" id="tuesday" hidden>
-                 <label for="tuesday" class="box box2">Tuesday</label>
+                 <label for="tuesday" class="box box2">Tuesday ❄️</label>
             <!-- </div> -->
               <div class="cont cont2">
                     <input class="ACTIVITY" type="text" placeholder="ACTIVITY"><br><br>
                     <center>
-                    <input class="inside" type="text"  placeholder="FORM">
-                    <input class="inside" type="text" placeholder="TO">
+                    <input class="inside" type="time"  placeholder="FORM">
+                    <input class="inside" type="time" placeholder="TO">
                     </center>
             </div>
         </div>
             <div class="day-row">
             <!-- <div class="box box3"> -->
                  <input type="checkbox" id="wednesday" hidden>
-                 <label for="wednesday"class="box box3">wednesday</label>
+                 <label for="wednesday"class="box box3">wednesday 🌸</label>
             <!-- </div> -->
               <div class="cont cont3">
                     <input class="ACTIVITY" type="text" placeholder="ACTIVITY"><br><br>
                     <center>
-                    <input class="inside" type="text"  placeholder="FORM">
-                    <input class="inside" type="text" placeholder="TO">
+                    <input class="inside" type="time"  placeholder="FORM">
+                    <input class="inside" type="time" placeholder="TO">
                     </center>
             </div>
             </div>
@@ -162,26 +225,26 @@
             <div class="day-row">
             <!-- <div class="box box4"> -->
                  <input type="checkbox" id="thursday" hidden>
-                 <label for="thursday"class="box box4">Thursday</label>
+                 <label for="thursday"class="box box4">Thursday 🌞</label>
             <!-- </div> -->
               <div class="cont cont4">
                     <input class="ACTIVITY" type="text" placeholder="ACTIVITY"><br><br>
                     <center>
-                    <input class="inside" type="text"  placeholder="FORM">
-                    <input class="inside" type="text" placeholder="TO">
+                    <input class="inside" type="time"  placeholder="FORM">
+                    <input class="inside" type="time" placeholder="TO">
                     </center>
             </div>
             </div>
             <div class="day-row">
             <!-- <div class="box box5"> -->
                  <input type="checkbox" id="friday" hidden>
-                 <label for="friday"class="box box5">Friday</label>
+                 <label for="friday"class="box box5">Friday 🔮</label>
             <!-- </div> -->
               <div class="cont cont5">
                     <input class="ACTIVITY" type="text" placeholder="ACTIVITY"><br><br>
                     <center>
-                    <input class="inside" type="text"  placeholder="FORM">
-                    <input class="inside" type="text" placeholder="TO">
+                    <input class="inside" type="time"  placeholder="FORM">
+                    <input class="inside" type="time" placeholder="TO">
                     </center>
             </div>
             </div>
@@ -189,26 +252,26 @@
             <div class="day-row">
             <!-- <div class="box box6"> -->
                  <input type="checkbox" id="saturday" hidden>
-                 <label for="saturday"class="box box6">saturday</label>
+                 <label for="saturday"class="box box6">saturday 🌌</label>
             <!-- </div> -->
               <div class="cont cont6">
                     <input class="ACTIVITY" type="text" placeholder="ACTIVITY"><br><br>
                     <center>
-                    <input class="inside" type="text"  placeholder="FORM">
-                    <input class="inside" type="text" placeholder="TO">
+                    <input class="inside" type="time"  placeholder="FORM">
+                    <input class="inside" type="time" placeholder="TO">
                     </center>
             </div>
             </div>
             <div class="day-row">
             <!-- <div class="box box7"> -->
                  <input type="checkbox" id="sunday" hidden>
-                 <label for="sunday"class="box box7">sunday</label>
+                 <label for="sunday"class="box box7">sunday 🌼</label>
             <!-- </div> -->
               <div class="cont cont7">
                     <input class="ACTIVITY" type="text" placeholder="ACTIVITY"><br><br>
                     <center>
-                    <input class="inside" type="text"  placeholder="FORM">
-                    <input class="inside" type="text" placeholder="TO">
+                    <input class="inside" type="time"  placeholder="FORM">
+                    <input class="inside" type="time" placeholder="TO">
                     </center>
             </div>
         </div>
