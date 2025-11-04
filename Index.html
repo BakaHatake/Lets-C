@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my weakly planner</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            /* background-color: rgb(172, 119, 221); */
+        }
+        body {
+               margin: 0;
+               padding: 0;
+               position: relative;
+               background: linear-gradient(
+               135deg,
+               #0f0c29 0%,     /* deep indigo */
+               #302b63 35%,    /* rich purple */
+               #24243e 65%,    /* muted violet-blue */
+               #1b2735 100%    /* dark midnight blue */
+               );
+               background-attachment: fixed;
+               background-size: cover;
+               color:rgba(130, 92, 92, 0.932);
+               text-shadow:
+               0 0 6px rgba(180, 120, 120, 0.6),
+               0 0 12px rgba(220, 160, 160, 0.4);
+               font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+               margin: 20px;
+               padding: 25px;
+               
+            }
+            @keyframes box {
+                0% { transform: translatex(-25px); opacity: 0; }
+                100% { transform: translatex(0px); opacity: 1; }
+            }
+            @keyframes header {
+                0% { transform: translatey(-50px); opacity: 0; }
+                100% { transform: translatey(0px); opacity: 1; }
+            }
+            @keyframes cont {
+                0% { transform: translatex(-15px); opacity: 0; }
+                100% { transform: translatex(0px); opacity: 1; }
+            }
+            h1,h2{
+            /* position:fixed; */
+            color: white;
+            margin-top:-20px;
+            text-shadow: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            letter-spacing: 1.1px;
+        }
+        header{
+            z-index: 10;
+            backdrop-filter: blur(2.5px);
+            text-align: center;
+            position: sticky;
+            top: 1px;
+            margin-bottom: 40px;
+            border-bottom: 2.5px solid white;
+            padding-bottom:7px;
+            animation: header 1.5s ease;
+            }
+        nav{
+            margin-bottom: 20px;
+        }
+        .cont{
+            /* display: none; */
+            /* display: flex; */
+            flex-direction:column;
+            justify-content: center;
+            /* gap: 10px; */
+            margin-bottom: 20px;
+            /* width: 100px; */
+
+        }
+        .day-row{
+            padding-left:10px;
+            width: 67%;
+            /* color: #c21010; */
+            display: flex;
+            align-items: center;
+            gap:3rem;
+            margin-bottom: 24px;
+        }
+        .box{
+            width: 150px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid black;
+            box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+            font-weight: bolder;
+            border-radius: 15px;
+            margin: 0;
+            animation: box 1s linear;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 17px;
+            text-align: center;
+            filter: blur(.3px);
+            text-shadow:
+               0 0 6px rgba(100, 100, 100, 0.6),
+               0 0 12px rgba(150, 150, 150, 0.4);
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1.03px;
+            background-clip: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .box:hover{
+            box-shadow:
+              0 0 15px rgba(255, 255, 255, 0.8),
+              0 0 20px rgba(255, 255, 255, 0.6);
+              transform: scale(1.05);
+              transition: all 0.5s ease;
+              color: black;
+              filter: blur(.3PX);
+        }
+            .box1{
+                background: linear-gradient(90deg, #ffe5e5 0%, #ff9a9a 50%, #ff4d4d 100%);
+                color: rgb(139, 12, 12);
+            }
+            .box2{
+                    background: linear-gradient(90deg, #e6f7ff 0%, #b3e5ff 50%, #80d4ff 100%);
+                    color: rgb(4, 73, 87);
+                    
+            }
+            .box3{
+                background: linear-gradient(90deg, #fff0f5 0%, #ffcfe6 50%, #ff9ccf 100%); 
+                color: rgb(177, 39, 106);
+            }
+            .box4{
+                    background: linear-gradient(90deg, #fff0e6 0%, #ffc9a9 50%, #ff9b73 100%);
+                    color: rgb(175, 69, 16);
+            }
+            .box5{
+                        background: linear-gradient(90deg, #f6f0ff 0%, #d9c2ff 50%, #b388ff 100%);
+                        color: rgb(75, 0, 130);
+            }
+            .box6{
+                      background: linear-gradient(90deg, #e0fff9 0%, #a0f0e8 50%, #64d9cf 100%);
+                      color: rgb(0, 102, 102);
+            }
+            .box7{
+                  background: linear-gradient(135deg, #fffce5 0%, #fff2a8 50%, #ffeb70 100%);
+                  color: rgb(153, 102, 0);
+            }
+        .cont{
+            /* width: 7%; */
+            display: none; 
+            flex: 1;
+            height:auto;
+            border-radius: 15px;
+            padding: 10px;
+            margin: 0;
+            animation: cont 2s ease;
+            color: black;
+            text-shadow:
+               0 0 6px rgba(100, 100, 100, 0.6),
+               0 0 12px rgba(150, 150, 150, 0.4);
+            font-weight: bold;
+            /* box-shadow: 0 0 10px rgba(0,0,0,0.2); */
+            filter: blur(.3px);
+            transition: all 5s ease;
+        }
+        .cont1{
+            background: linear-gradient(180deg, #ff9a9a 0%, #ff4d4d 100%);
+            box-shadow:
+              0 0 10px rgba(255, 90, 90, 0.8),
+              0 0 25px rgba(255, 50, 50, 0.6);
+        }
+        .cont2{
+                background: linear-gradient(180deg, #b3e5ff 0%, #80d4ff 100%);
+                box-shadow:
+              0 0 10px rgba(120, 200, 255, 0.8),
+              0 0 25px rgba(100, 180, 255, 0.6);
+        }
+        .cont3{
+            background: linear-gradient(90deg, #fff0f5 0%, #ffcfe6 50%, #ff9ccf 100%);
+            box-shadow:
+              0 0 10px rgba(255, 160, 200, 0.8),
+              0 0 25px rgba(255, 120, 180, 0.6);
+        }
+        .cont4{
+                  background: linear-gradient(180deg, rgba(255,201,169,0.95) 0%, rgba(255,155,115,1) 100%);
+                  box-shadow:
+              0 0 10px rgba(255, 170, 120, 0.8),
+              0 0 25px rgba(255, 140, 90, 0.6);
+        }
+        .cont5{
+              background: linear-gradient(180deg, rgba(179,136,255,0.95) 0%, rgba(217,194,255,1) 100%);
+              box-shadow:
+              0 0 10px rgba(200, 160, 255, 0.8),
+              0 0 25px rgba(179, 136, 255, 0.6);
+        }
+        .cont6{
+              background: linear-gradient(180deg, rgba(160,240,232,0.95) 0%, rgba(100,217,207,1) 100%);
+              box-shadow:
+              0 0 10px rgba(160, 240, 232, 0.8),
+              0 0 25px rgba(100, 217, 207, 0.6);
+        }
+        .cont7{
+              background: linear-gradient(180deg, #fff2a8 0%, #ffeb70 100%);
+              box-shadow:
+              0 0 10px rgba(255, 240, 150, 0.8),
+              0 0 25px rgba(255, 220, 60, 0.6);
+        }
+        .ACTIVITY{
+            filter: blur(.2px);
+            background: white;
+            width: 95%;
+            height: 30px;
+            border-radius: 8px;
+            border: 0px solid black;
+            box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px;
+            /* margin:10PX */
+        }
+        .inside{
+            width: 25%;
+            height: 25px;
+            border-radius: 8px;
+            border: 0px solid black;
+            box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            font-size: 14px;
+            font-weight: bold;
+            padding: 5px;
+            margin-right:4rem;
+        }
+        input[type="checkbox"]:checked ~ .cont{
+        display: block;
+  }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+      <center><h1>weekly planner</h1>
+        <h2>⚡-- To-Do List --⚡</h2></center>
+        </nav>
+           </header>
+        <div class="day-row">
+            <!-- <div class="box box1"> -->
+                 <input type="checkbox" id="Monday" hidden>
+                 <label for="Monday" class="box box1">Monday 🌅 </label>
+            <!-- </div> -->
+              <div class="cont cont1">
+                    <input class="ACTIVITY" type="text" placeholder="ACTIVITY"><br><br>
+                  <center><input class="inside" type="time"  placeholder="FORM">
+                    <input class="inside" type="time" placeholder="TO">
+                    </center> 
+              </div>
+            </div>
+            <div class="day-row">
+            <!-- <div class="box box2"> -->
+                 <input type="checkbox" id="tuesday" hidden>
+                 <label for="tuesday" class="box box2">Tuesday ❄️</label>
+            <!-- </div> -->
+              <div class="cont cont2">
+                    <input class="ACTIVITY" type="text" placeholder="ACTIVITY"><br><br>
+                    <center>
+                    <input class="inside" type="time"  placeholder="FORM">
+                    <input class="inside" type="time" placeholder="TO">
+                    </center>
+            </div>
+        </div>
+            <div class="day-row">
+            <!-- <div class="box box3"> -->
+                 <input type="checkbox" id="wednesday" hidden>
+                 <label for="wednesday"class="box box3">wednesday 🌸</label>
+            <!-- </div> -->
+              <div class="cont cont3">
+                    <input class="ACTIVITY" type="text" placeholder="ACTIVITY"><br><br>
+                    <center>
+                    <input class="inside" type="time"  placeholder="FORM">
+                    <input class="inside" type="time" placeholder="TO">
+                    </center>
+            </div>
+            </div>
+            
+            <div class="day-row">
+            <!-- <div class="box box4"> -->
+                 <input type="checkbox" id="thursday" hidden>
+                 <label for="thursday"class="box box4">Thursday 🌞</label>
+            <!-- </div> -->
+              <div class="cont cont4">
+                    <input class="ACTIVITY" type="text" placeholder="ACTIVITY"><br><br>
+                    <center>
+                    <input class="inside" type="time"  placeholder="FORM">
+                    <input class="inside" type="time" placeholder="TO">
+                    </center>
+            </div>
+            </div>
+            <div class="day-row">
+            <!-- <div class="box box5"> -->
+                 <input type="checkbox" id="friday" hidden>
+                 <label for="friday"class="box box5">Friday 🔮</label>
+            <!-- </div> -->
+              <div class="cont cont5">
+                    <input class="ACTIVITY" type="text" placeholder="ACTIVITY"><br><br>
+                    <center>
+                    <input class="inside" type="time"  placeholder="FORM">
+                    <input class="inside" type="time" placeholder="TO">
+                    </center>
+            </div>
+            </div>
+             
+            <div class="day-row">
+            <!-- <div class="box box6"> -->
+                 <input type="checkbox" id="saturday" hidden>
+                 <label for="saturday"class="box box6">saturday 🌌</label>
+            <!-- </div> -->
+              <div class="cont cont6">
+                    <input class="ACTIVITY" type="text" placeholder="ACTIVITY"><br><br>
+                    <center>
+                    <input class="inside" type="time"  placeholder="FORM">
+                    <input class="inside" type="time" placeholder="TO">
+                    </center>
+            </div>
+            </div>
+            <div class="day-row">
+            <!-- <div class="box box7"> -->
+                 <input type="checkbox" id="sunday" hidden>
+                 <label for="sunday"class="box box7">sunday 🌼</label>
+            <!-- </div> -->
+              <div class="cont cont7">
+                    <input class="ACTIVITY" type="text" placeholder="ACTIVITY"><br><br>
+                    <center>
+                    <input class="inside" type="time"  placeholder="FORM">
+                    <input class="inside" type="time" placeholder="TO">
+                    </center>
+            </div>
+        </div>
+</body>
+                      </html>
