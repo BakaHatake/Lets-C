@@ -1,5 +1,5 @@
 {
   "redirects": [
-    { "source": "/", "destination": "/html/3.html" }
+    { "source": "/", "destination": "/html/weak.html" }
   ]
 }
