@@ -1,10 +1,5 @@
 {
-  "builds": [
-    { "src": "html/**/*.html", "use": "@vercel/static" },
-    { "src": "css/**/*.css", "use": "@vercel/static" },
-    { "src": "js/**/*.js", "use": "@vercel/static" }
-  ],
-  "routes": [
-    { "src": "^/$", "dest": "/html/weak.html" }
+  "rewrites": [
+    { "source": "/", "destination": "/html/weak.html" }
   ]
 }
