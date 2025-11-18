@@ -6,101 +6,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root{
-      --bg:#0b0f14;
-      --card:#111827;
-      --ink:#e5e7eb;
-      --muted:#9ca3af;
-      --accent:#22d3ee;
-      --accent2:#a78bfa;
+      --bg:#0b0f14; --card:#111827; --ink:#e5e7eb; --muted:#9ca3af;
+      --accent:#22d3ee; --accent2:#a78bfa; --glow: rgba(34,211,238,0.4);
     }
     *{box-sizing:border-box}
     body{
-      margin:0;
-      padding:32px;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+      margin:0; padding:32px;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       background: linear-gradient(120deg, #0b0f14, #0f172a);
-      color:var(--ink);
-      line-height:1.6;
+      color:var(--ink); line-height:1.6;
     }
-    .wrap{
-      max-width: 900px;
-      margin: 0 auto;
-    }
+    .wrap{ max-width: 900px; margin: 0 auto; }
     .card{
       background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 28px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 20px;
+      padding: 28px; box-shadow: 0 10px 30px rgba(0,0,0,.35); backdrop-filter: blur(6px);
     }
-    h1{
-      font-size: 28px;
-      margin:0 0 8px;
-      letter-spacing: .2px;
+    h1{ font-size: 28px; margin:0 0 8px; letter-spacing: .2px; }
+    .subtitle{ color:var(--muted); margin-bottom: 24px; }
+    h2{ margin: 28px 0 8px; font-size: 20px; color:#e9d5ff; }
+    
+    .nav-container {
+      display: flex; justify-content: flex-start; gap: 15px; margin: 20px 0 35px 0; flex-wrap: wrap;
     }
-    .subtitle{
-      color:var(--muted);
-      margin-bottom: 24px;
+    .nav-btn {
+      text-decoration: none; padding: 12px 24px; border-radius: 12px; font-weight: 600;
+      color: #fff; background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative; overflow: hidden; display: flex; align-items: center; gap: 8px;
     }
-    h2{
-      margin: 28px 0 8px;
-      font-size: 20px;
-      color:#e9d5ff;
+    .nav-btn:hover {
+      transform: translateY(-4px); border-color: var(--accent);
+      box-shadow: 0 0 20px var(--glow); background: rgba(34, 211, 238, 0.1); color: var(--accent);
     }
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:16px;
+    .nav-btn.secondary:hover {
+      border-color: var(--accent2); box-shadow: 0 0 20px rgba(167, 139, 250, 0.4);
+      background: rgba(167, 139, 250, 0.1); color: var(--accent2);
     }
-    .pill{
-      display:inline-block;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.15);
-      color:var(--muted);
-      font-size: 12px;
-      margin-right:8px;
-    }
-    ul{margin:8px 0 0 18px}
-    li{margin:4px 0}
-    .foot{
-      margin-top:24px;
-      font-size:12px;
-      color:var(--muted);
-    }
-    .badge{
-      display:inline-block;
-      padding:4px 8px;
-      border-radius:10px;
-      background:rgba(34,211,238,.1);
-      border:1px solid rgba(34,211,238,.35);
-      color:#a5f3fc;
-      font-size:12px;
-      margin-left:8px;
-    }
+    /* ------------------------- */
+
+    .grid{ display:grid; grid-template-columns: 1fr; gap:16px; }
+    ul{margin:8px 0 0 18px} li{margin:4px 0}
     .section{
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding:16px;
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding:16px;
     }
-    .two-col{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:12px;
-    }
-    @media(min-width:800px){
-      .two-col{ grid-template-columns: 1fr 1fr; }
-    }
-    .emoji{font-size: 22px; margin-right: 6px;}
+    .two-col{ display:grid; grid-template-columns: 1fr; gap:12px; }
+    @media(min-width:800px){ .two-col{ grid-template-columns: 1fr 1fr; } }
     .list-tag{color:#cbd5e1; font-weight:600}
     .callout{
-      padding:12px 14px;
-      background:rgba(167,139,250,.08);
-      border:1px solid rgba(167,139,250,.35);
-      border-radius:12px;
-      margin-top:16px;
+      padding:12px 14px; background:rgba(167,139,250,.08);
+      border:1px solid rgba(167,139,250,.35); border-radius:12px; margin-top:16px;
     }
   </style>
 </head>
@@ -108,7 +65,12 @@
   <div class="wrap">
     <div class="card">
       <h1>🏗️ AI Interior Design — Project Plan</h1>
-      <div class="subtitle">Upload room photo → detect layout + furniture → suggest items → drag & drop in 2D/3D. Built by a sane team, not a corporation.</div>
+      <div class="subtitle">Upload room photo → detect layout + furniture → suggest items → drag & drop in 2D/3D.</div>
+
+      <div class="nav-container">
+        <a href="cloud.html" class="nav-btn">☁️ Cloud & Pricing</a>
+        <a href="roles.html" class="nav-btn secondary">👥 Individual Roles</a>
+      </div>
 
       <div class="section">
         <h2>🧠 Overview</h2>
@@ -119,25 +81,24 @@
         <div class="section">
           <h2>💻 Tech Stack</h2>
           <ul>
-            <li><span class="list-tag">Frontend (Web):</span> React + Tailwind + react-beautiful-dnd</li>
+            <li><span class="list-tag">Frontend:</span> React + Tailwind + react-beautiful-dnd</li>
             <li><span class="list-tag">Mobile:</span> React Native</li>
-            <li><span class="list-tag">Backend:</span> FastAPI (Python) + PostgreSQL</li>
-            <li><span class="list-tag">AI Engine:</span> PyTorch / TensorFlow</li>
+            <li><span class="list-tag">Backend:</span> FastAPI (Python) + MongoDB Atlas</li>
+            <li><span class="list-tag">AI Engine:</span> PyTorch / YOLOv8 / CLIP</li>
             <li><span class="list-tag">3D Rendering:</span> Three.js</li>
             <li><span class="list-tag">Storage:</span> Cloudinary</li>
             <li><span class="list-tag">Hosting:</span> Railway (API), Vercel (Web)</li>
-            <li><span class="list-tag">Version Control:</span> GitHub</li>
           </ul>
         </div>
         <div class="section">
           <h2>👥 Team</h2>
           <ul>
-            <li>🤖 Srinivas — AI Model Training (YOLO, TF, PT)</li>
-            <li>🧑‍💻 Anush — Backend (FastAPI, DB, AI integration)</li>
-            <li>📊 Manish — Data & Model Integration</li>
-            <li>🖥️ Akash — Frontend Web (React, UI/UX)</li>
-            <li>📲 Punith — Mobile App (React Native)</li>
-            <li>🔐 Darshan — DevOps & Security (Docker, Railway/Vercel, HTTPS)</li>
+            <li>🤖 Srinivas — AI Model Training</li>
+            <li>🧑‍💻 Anush — Backend & DB</li>
+            <li>📊 Manish — Data Integration</li>
+            <li>🖥️ Akash — Frontend Web</li>
+            <li>📲 Punith — Mobile App</li>
+            <li>🔐 Darshan — DevOps & Security</li>
           </ul>
         </div>
       </div>
@@ -146,9 +107,9 @@
         <div class="section">
           <h2>🗓️ Roadmap</h2>
           <ul>
-            <li>📘 3rd–4th Sem: Learning + MVP (upload → detect → basic suggestions)</li>
-            <li>🧩 5th–6th Sem: Integrate backend + AI + frontend (drag-drop, DB, saves)</li>
-            <li>🚀 7th Sem: Polish + public launch (3D, marketplace bridge, 24/7 deploy)</li>
+            <li>📘 3rd–4th Sem: Learning + MVP (upload → detect → suggestions)</li>
+            <li>🧩 5th–6th Sem: Backend + AI + Frontend integration</li>
+            <li>🚀 7th Sem: Polish + Public launch (marketplace bridge)</li>
             <li>🎓 8th Sem: Final presentation + live demo</li>
           </ul>
         </div>
@@ -156,37 +117,20 @@
           <h2>🎯 Goals</h2>
           <ul>
             <li>Functional, real project — not a demo</li>
-            <li>Learn + collaborate + integrate systems</li>
             <li>MVP by 4th sem; launch by 7th sem</li>
-            <li>Use free-tier stack: GitHub, Railway, Vercel, Colab, Cloudinary</li>
+            <li>Use free-tier stack: GitHub, Railway, Vercel, Cloudinary</li>
             <li>Deploy, test, iterate like a real team</li>
           </ul>
         </div>
       </div>
 
       <div class="section">
-        <h2>🛒 Expansion: Seller ↔ User Marketplace Bridge</h2>
-        <p>Link AI-suggested furniture to real stores nearby. Sellers register, upload furniture catalogs (images, prices, styles), and users get location-based recommendations.</p>
-        <ul>
-          <li><span class="list-tag">Seller Accounts:</span> registration, verification</li>
-          <li><span class="list-tag">Catalog Upload:</span> furniture name, price, size, stock, style tags</li>
-          <li><span class="list-tag">APIs:</span> <code>/seller/register</code>, <code>/seller/products</code>, <code>/suggestions</code></li>
-          <li><span class="list-tag">Matching Logic:</span> AI → category/style → product DB → filter by distance</li>
-          <li><span class="list-tag">Optional:</span> CLIP-based visual similarity search</li>
-        </ul>
-      </div>
-
-      <div class="section">
-        <h2>💡 Notes</h2>
-        <ul>
-          <li>No private servers needed. $5–10/mo backend uptime is enough.</li>
-          <li>Google Colab GPUs are fine for model training.</li>
-          <li>Focus on a working system you can demo. Perfect is optional.</li>
-        </ul>
+        <h2>🛒 Expansion: Seller Marketplace</h2>
+        <p>Link AI-suggested furniture to real stores nearby. Sellers register catalogs; users get location-based recommendations.</p>
       </div>
 
       <div class="callout">
-        🏁 <strong>Summary:</strong> This proves your team can design, build, and deploy a full AI-powered application. Even if it's not perfect, it shows end-to-end understanding — backend, AI, frontend, and cloud deployment. 💪
+        🏁 <strong>Summary:</strong> This proves your team can design, build, and deploy a full AI-powered application. 💪
       </div>
     </div>
   </div>

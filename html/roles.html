@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Team Technical Roles</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root{
+      --bg:#0b0f14; --card:#111827; --ink:#e5e7eb; --muted:#9ca3af;
+      --accent:#22d3ee; --accent2:#a78bfa;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; padding:32px; font-family: system-ui, -apple-system, sans-serif;
+      background: linear-gradient(120deg, #0b0f14, #0f172a); color:var(--ink);
+    }
+    .wrap{ max-width: 1200px; margin: 0 auto; }
+    .card-main{
+      background: #111827; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px;
+      padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; }
+    .back-btn {
+      text-decoration: none; color: var(--muted); border: 1px solid rgba(255,255,255,0.2);
+      padding: 6px 12px; border-radius: 8px; font-size: 14px; transition: 0.2s;
+    }
+    .back-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+    .role-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px;
+    }
+    .role-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px; padding: 24px;
+    }
+    .role-header { 
+      display: flex; align-items: center; margin-bottom: 20px; 
+      padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); 
+    }
+    .avatar {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: bold; color: #000; margin-right: 14px; font-size: 20px;
+    }
+    .name { font-weight: 700; font-size: 20px; color: #fff; }
+    .title { font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+
+    .tech-section { margin-bottom: 12px; }
+    .tech-label { 
+      color: var(--muted); font-size: 11px; text-transform: uppercase; 
+      letter-spacing: 0.5px; margin-bottom: 4px; display: block;
+    }
+    .tech-content { font-size: 14px; color: #e5e7eb; line-height: 1.5; }
+    .tag {
+      display: inline-block; background: rgba(255,255,255,0.08); 
+      padding: 2px 8px; border-radius: 4px; margin: 0 4px 4px 0; border: 1px solid rgba(255,255,255,0.1);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card-main">
+      <div class="header">
+        <h1>👥 Individual Technical Responsibilities</h1>
+        <a href="sip.html" class="back-btn">← Back Home</a>
+      </div>
+
+      <div class="role-grid">
+        
+        <div class="role-card">
+          <div class="role-header">
+            <div class="avatar">S</div>
+            <div><div class="name">Srinivas</div><div class="title">AI Model Training</div></div>
+          </div>
+          <div class="tech-section">
+            <span class="tech-label">Language</span>
+            <div class="tech-content">Python</div>
+          </div>
+          <div class="tech-section">
+            <span class="tech-label">Libraries</span>
+            <div class="tech-content">
+              <span class="tag">NumPy</span> <span class="tag">OpenCV</span> <span class="tag">PyTorch</span>
+              <span class="tag">YOLOv8/v10</span> <span class="tag">ONNX Runtime</span> <span class="tag">CLIP</span>
+            </div>
+          </div>
+          <div class="tech-section">
+            <span class="tech-label">Tools</span>
+            <div class="tech-content">Roboflow, Google Colab, Git/GitHub</div>
+          </div>
+        </div>
+
+        <div class="role-card">
+          <div class="role-header">
+            <div class="avatar">A</div>
+            <div><div class="name">Anush</div><div class="title">Backend & Integration</div></div>
+          </div>
+          <div class="tech-section">
+            <span class="tech-label">Language</span>
+            <div class="tech-content">Python</div>
+          </div>
+          <div class="tech-section">
+            <span class="tech-label">Libraries</span>
+            <div class="tech-content">
+              <span class="tag">FastAPI</span> <span class="tag">Pydantic</span> <span class="tag">Motor</span>
+              <span class="tag">ONNX Runtime</span> <span class="tag">Cloudinary SDK</span>
+            </div>
+          </div>
+          <div class="tech-section">
+            <span class="tech-label">Tools</span>
+            <div class="tech-content">MongoDB Atlas, Railway, Git/GitHub</div>
+          </div>
+          <div class="tech-section">
+            <span class="tech-label">Concepts</span>
+            <div class="tech-content">Async/Await, JWT Auth, API Design, JSON</div>
+          </div>
+        </div>
+
+        <div class="role-card">
+          <div class="role-header">
+            <div class="avatar">M</div>
+            <div><div class="name">Manish</div><div class="title">Data & Model Integration</div></div>
+          </div>
+          <div class="tech-section">
+            <span class="tech-label">Language</span>
+            <div class="tech-content">Python</div>
+          </div>
+          <div class="tech-section">
+            <span class="tech-label">Libraries</span>
+            <div class="tech-content">
+              <span class="tag">NumPy</span> <span class="tag">Pandas</span>
+              <span class="tag">PyTorch (Outputs)</span> <span class="tag">CLIP</span>
+            </div>
+          </div>
+          <div class="tech-section">
+            <span class="tech-label">Concepts</span>
+            <div class="tech-content">JSON Structuring, Image Preprocessing, Cosine Similarity</div>
+          </div>
+        </div>
+
+        <div class="role-card">
+          <div class="role-header">
+            <div class="avatar">Ak</div>
+            <div><div class="name">Akash</div><div class="title">Frontend Web (React)</div></div>
+          </div>
+          <div class="tech-section">
+            <span class="tech-label">Languages</span>
+            <div class="tech-content">HTML, CSS, JavaScript</div>
+          </div>
+          <div class="tech-section">
+            <span class="tech-label">Libraries</span>
+            <div class="tech-content">
+              <span class="tag">React</span> <span class="tag">Tailwind CSS</span>
+              <span class="tag">Axios</span> <span class="tag">React Router</span>
+            </div>
+          </div>
+          <div class="tech-section">
+            <span class="tech-label">Concepts</span>
+            <div class="tech-content">Component-based UI, State Management, Image Rendering</div>
+          </div>
+        </div>
+
+        <div class="role-card">
+          <div class="role-header">
+            <div class="avatar">P</div>
+            <div><div class="name">Punith</div><div class="title">Mobile App</div></div>
+          </div>
+          <div class="tech-section">
+            <span class="tech-label">Language</span>
+            <div class="tech-content">JavaScript</div>
+          </div>
+          <div class="tech-section">
+            <span class="tech-label">Libraries</span>
+            <div class="tech-content">
+              <span class="tag">React Native</span> <span class="tag">React Navigation</span>
+              <span class="tag">Axios</span> <span class="tag">Image Picker</span>
+            </div>
+          </div>
+          <div class="tech-section">
+            <span class="tech-label">Concepts</span>
+            <div class="tech-content">AsyncStorage, Mobile UI Basics</div>
+          </div>
+        </div>
+
+        <div class="role-card">
+          <div class="role-header">
+            <div class="avatar">D</div>
+            <div><div class="name">Darshan</div><div class="title">DevOps & Security</div></div>
+          </div>
+          <div class="tech-section">
+            <span class="tech-label">Tools</span>
+            <div class="tech-content">
+              <span class="tag">Docker</span> <span class="tag">Railway</span> <span class="tag">Vercel</span>
+              <span class="tag">GitHub Actions</span>
+            </div>
+          </div>
+          <div class="tech-section">
+            <span class="tech-label">Concepts</span>
+            <div class="tech-content">Env Variables, HTTPS/SSL, CI/CD Flow</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

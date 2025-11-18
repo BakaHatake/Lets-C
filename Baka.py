@@ -1,6 +1,5 @@
 from flask import Flask, send_from_directory
 import os
-import os 
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 HTML_DIR = os.path.join(BASE, "html")
@@ -9,17 +8,25 @@ JS_DIR = os.path.join(BASE, "js")
 
 app = Flask(__name__)
 
+# 1. Serve the Home Page
 @app.route("/")
 def home():
-    return send_from_directory(HTML_DIR,"todo.html")  # serves html/1.html
+    return send_from_directory(HTML_DIR, "sip.html")
 
+# 2. NEW: Serve any other HTML file (like cloud.html or roles.html)
+@app.route("/<path:filename>")
+def serve_html(filename):
+    return send_from_directory(HTML_DIR, filename)
+
+# 3. Serve CSS
 @app.route("/css/<path:filename>")
 def serve_css(filename):
-    return send_from_directory(CSS_DIR, filename)   # serves css/*
+    return send_from_directory(CSS_DIR, filename)
 
+# 4. Serve JS
 @app.route("/js/<path:filename>")
 def serve_js(filename):
-    return send_from_directory(JS_DIR, filename)    # serves js/*
+    return send_from_directory(JS_DIR, filename)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8080))
