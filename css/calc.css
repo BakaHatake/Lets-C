@@ -1,0 +1,120 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #e8e8e8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.calculator {
+    width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+}
+
+.display {
+    width: 100%;
+    height: 55px;
+    font-size: 24px;
+    text-align: right;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+    background: #f7f7f7;
+    margin-bottom: 20px;
+}
+
+/* Buttons Grid */
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 60px;
+    gap: 12px;
+}
+
+/* All Buttons */
+button {
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    opacity: 0;
+}
+
+/* Operator Buttons */
+button.operator {
+    background: #ff9800;
+    font-weight: bold;
+}
+
+/* C and DEL buttons */
+button.special {
+    background: #ff4d4d;
+    font-weight: bold;
+}
+
+/* Equal Button FULL WIDTH */
+button.equal {
+    background: green;
+    grid-column: span 4;
+    height: 65px;
+    font-size: 24px;
+}
+.calculator {
+    width: 330px;
+    padding: 20px;
+    background: white;
+    border-radius: 20px;
+}
+
+.display {
+    width: 100%;
+    height: 60px;
+    font-size: 28px;
+    text-align: right;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+button {
+    height: 60px;
+    font-size: 22px;
+    border: none;
+    border-radius: 10px;
+    background: #0077ff;
+    color: white;
+}
+
+.operator {
+    background: orange;
+}
+
+/* DEL = 25% width (1 column) */
+.del {
+    background: tomato;
+    grid-column: span 1;
+}
+
+/* = = 75% width (3 columns) */
+.equal {
+    background: green;
+    height: 60px;
+    font-size: 26px;
+    grid-column: span 3;
+}
