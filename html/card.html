@@ -12,27 +12,26 @@
         <div class="text"><h1>Details For The Card</h1></div>
        <div class="image" id="image">
         <h2>Image URL</h2>
-            <input type="url" placeholder="Url of photo">
+            <input type="url" id="imageURL" placeholder="Url of photo">
             
         </div> 
         <div class="info" id="info">
             <h3>Your Message</h3>
-            <input type="text" placeholder="Info to display">
+            <input type="text" id="message" placeholder="Info to display">
         </div> <br>
         <div class="small" id="small">
             <h4>View Count</h4>
-            <input type="number" placeholder="Enter the views"></div>
+            <input type="number" id="views" placeholder="Enter the views"></div>
         <div class="small" id="small">
             <h4>Upload Date</h4>
-            <input type="number" placeholder="Enter the date">
-        </div>  <br>  <!-- 
-        <div class="info1" id="info1">
-            <textarea rows="4" placeholder="Enter the breif intro"></textarea>
-        </div> -->
-       <br> <div class="info info1">
+            <input type="date" id="date" placeholder="Enter the date">
+        </div>  <br>
+       <br> <div class="info">
             <h4>Brief intro</h4>
-       <input type="text" placeholder="Enter the breif intro">
+       <input type="text" id="intro" placeholder="Enter the breif intro">
         </div>
+        <button class="submit-btn" id="submit">Submit</button>
     </div>
+    <script src="/js/card.js"></script>
 </body>
 </html>

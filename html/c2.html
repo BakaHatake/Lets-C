@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Display</title>
+    <link rel="stylesheet" href="/css/c2.css">
+</head>
+<body>
+
+    <div class="main">
+
+        <div class="row">
+            <div class="pic">
+                <img id="cardImg" src="">
+            </div>
+
+            <div class="text">
+                <h1 id="cardTitle"></h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="count" id="countBox"></div>
+            <div class="count" id="dateBox"></div>
+        </div>
+
+        <div class="info">
+            <p id="introText"></p>
+        </div>
+
+    </div>
+
+<script>
+    const data = JSON.parse(localStorage.getItem("cardData"));
+
+    if (data) {
+        document.getElementById("cardImg").src = data.image;
+        document.getElementById("cardTitle").textContent = data.message;
+        document.getElementById("countBox").textContent = "Views: " + data.views;
+        document.getElementById("dateBox").textContent = "Uploaded: " + data.date;
+        document.getElementById("introText").textContent = data.intro;
+    }
+</script>
+
+</body>
+</html>
