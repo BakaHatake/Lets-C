@@ -1,0 +1,99 @@
+body{
+    background-color: rgb(255, 255, 255);
+}
+
+.container{
+    display: block;
+    background-color: rgb(219, 214, 214);
+    color: rgb(27, 25, 25);
+    font-size: 1.5 rem;
+    height:80vh;
+    border-radius: 10px;
+    margin: 80px;
+    border: 0.5px solid white;
+}
+.text{
+    margin: 10px;
+    width: 23%;
+    display: block;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    justify-content: center;
+    height: 15%;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.image{
+    display: block;
+    width: auto;
+    margin: 0px 40px;
+    color: rgb(0, 0, 0);
+    height: 120px;
+    padding-left: 10px;
+    cursor: pointer;
+
+}
+.image input{
+    display: block;
+    width: 40vh;
+    height: 40px;
+    color: black;
+    background-color: blueviolet;
+    border-radius: 20px;
+}
+.image input::placeholder{
+    color: black;
+}
+.info{
+    display: block;
+    width: auto;
+    margin: 2px 40px;
+    color: rgb(0, 0, 0);
+    height: 120px;
+    padding-left: 10px;
+    cursor: pointer;
+    height: auto;
+    border: 2px solid black;
+}
+.info input{
+    display: block;
+    width: 80%;
+    height: 130px;
+    color: black;
+    border: 1px solid rgb(0, 0, 0);
+    background-color: rgb(0, 60, 255);
+    border-radius: 20px;
+}
+.info input::placeholder{
+    color: black;
+}
+.small{
+    display: inline-flex;
+    width: 30%;
+    margin-left: 40px;  
+    margin-top:10px;
+    color: rgb(0, 0, 0);
+    height: 120px;
+    padding-left: 10px;
+    cursor: pointer;
+    border: 2px solid black;
+    font-size: 1.5rem;
+
+}
+.small input{
+    position: absolute;
+    margin-top: 60px;
+    padding-top: 10px;
+    width: 40vh;
+    height: 40px;
+    color: black;
+    background-color: blueviolet;
+    border-radius: 20px;
+}
+.small h5{
+    margin-top: 4px;
+}
+.small h4{
+    margin-top: 4px;
+}

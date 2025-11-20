@@ -17,3 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+let div=document.createElement("div");
+div.innerHTML="This was created <b>by me</b>";
+div.style.color="#ffffffff";
+// div.style.position="absolute";
+div.style.marginTop="-17px"
+div.style.fontSize="20px"
+div.setAttribute("class","created")
+document.querySelector(".header").append(div)
