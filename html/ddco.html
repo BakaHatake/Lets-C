@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>ESP32 Attendance Project - Flow & Pricing</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; color: #111; line-height: 1.45; }
+    .page { max-width: 800px; margin: 0 auto 40px; padding: 24px; border: 1px solid #eee; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+    h1 { font-size: 20px; margin-bottom: 12px; }
+    h2 { font-size: 16px; margin: 18px 0 8px; }
+    ul { margin: 8px 0 16px 20px; }
+    .note { background:#f7f9fc; padding:10px; border-left:4px solid #3b82f6; margin-top:10px; border-radius:4px; }
+    .cost-table { width:100%; border-collapse: collapse; margin-top:10px; }
+    .cost-table td, .cost-table th { padding:8px 10px; border:1px solid #e6e6e6; text-align:left; }
+    .muted { color:#555; font-size:13px; }
+    footer { text-align:center; margin-top:18px; color:#666; font-size:13px; }
+    .small { font-size:13px; color:#333; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Attendance System Using ESP32-CAM — System Flow</h1>
+    <ol>
+      <li>Student appears in front of the ESP32-CAM.</li>
+      <li>ESP32-CAM performs lightweight face detection on-device.</li>
+      <li>ESP32 captures a JPEG image and sends it via HTTP POST to the FastAPI backend over Wi-Fi.</li>
+      <li>FastAPI receives the image, re-runs accurate face detection, and crops the face.</li>
+      <li>Backend generates face embeddings using MobileFaceNet or ArcFace.</li>
+      <li>Backend compares embeddings with stored user embeddings in MongoDB Atlas.</li>
+      <li>Backend identifies the person and records attendance in the database.</li>
+      <li>Optional: Image is uploaded to Cloudinary and the URL is stored in the DB.</li>
+      <li>A dashboard (React hosted on Vercel) displays attendance logs in real time.</li>
+    </ol>
+    <div class="note">
+      <strong>Deployment note:</strong> ESP32 only does detection. All recognition happens on the backend for reliability.
+    </div>
+  </div>
+
+  <div class="page">
+    <h1>Project Pricing Breakdown (India)</h1>
+    <h2>Hardware Costs</h2>
+    <table class="cost-table">
+      <tr><td>ESP32-CAM (OV2640)</td><td>₹800</td></tr>
+      <tr><td>FTDI USB-to-Serial programmer</td><td>₹200</td></tr>
+      <tr><td>5V 2A Power Adapter</td><td>₹200</td></tr>
+      <tr><td>Jumper wires</td><td>₹50</td></tr>
+      <tr><td>Breadboard / PCB</td><td>₹80–150</td></tr>
+      <tr><td>Enclosure / Case</td><td>₹80–150</td></tr>
+      <tr><td>Optional IR LED / Light</td><td>₹200</td></tr>
+      <tr><td>Optional MicroSD</td><td>₹200</td></tr>
+    </table>
+
+    <h2>Typical Totals</h2>
+    <ul>
+      <li><strong>Prototype Build:</strong> ₹1,300–₹1,600</li>
+      <li><strong>Full Deployable Build:</strong> ₹1,900–₹2,200</li>
+    </ul>
+
+    <h2>Cloud Costs</h2>
+    <table class="cost-table">
+      <tr><td>Railway (backend hosting)</td><td>₹400/month (optional, for demo)</td></tr>
+      <tr><td>MongoDB Atlas</td><td>Free tier</td></tr>
+      <tr><td>Cloudinary</td><td>Free tier</td></tr>
+      <tr><td>Vercel</td><td>Free tier</td></tr>
+      <tr><td>Google Colab (model training)</td><td>Free</td></tr>
+    </table>
+
+    <div class="note small">
+      <strong>RAM note:</strong> Railway's 512 MB RAM is enough for FastAPI and face recognition for this project.
+    </div>
+  </div>
+</body>
+</html>
