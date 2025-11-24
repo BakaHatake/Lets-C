@@ -26,20 +26,32 @@ async function apicall(city) {
     const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
 
     try {
-        const res = await fetch(url);
-        const data = await res.json();
-        console.log(data);
+    const res = await fetch(url);
+    const data = await res.json();
 
-        document.getElementById("cityName").textContent =
-            data.location.name + " " +
-            data.location.region + " " +
-            data.location.country;
-
-        document.getElementById("temp").textContent = data.current.temp_c + "°C";
-        document.getElementById("humidity").textContent = data.current.humidity + "%";
-        document.getElementById("condition").textContent = data.current.condition.text;
-
-    } catch (error) {
-        console.log("API call tripped:", error);
+    if (data.error) {
+        document.getElementById("cityName").textContent = "Try another city";
+        document.getElementById("temp").textContent = "";
+        document.getElementById("humidity").textContent = "";
+        document.getElementById("condition").textContent = "";
+        return;
     }
+
+    document.getElementById("cityName").textContent =
+        data.location.name + " " +
+        data.location.region + " " +
+        data.location.country;
+
+    document.getElementById("temp").textContent = data.current.temp_c + "°C";
+    document.getElementById("humidity").textContent = data.current.humidity + "%";
+    document.getElementById("condition").textContent = data.current.condition.text;
+
+} catch (error) {
+    console.log("API call tripped:", error);
+
+    document.getElementById("cityName").textContent = "Try another city";
+    document.getElementById("temp").textContent = "";
+    document.getElementById("humidity").textContent = "";
+    document.getElementById("condition").textContent = "";
+}
 }
