@@ -28,10 +28,12 @@ body {
 .input-section {
   display: flex;
   gap: 10px;
+  
   margin-bottom: 25px;
 }
 
 .input-section input {
+
   flex: 1;
   padding: 10px;
   border-radius: 6px;
@@ -66,3 +68,29 @@ body {
 .weather-info span {
   font-weight: bold;
 }
+
+.input-section.column {
+  flex-direction: column;
+}
+
+.input-section.column input,
+.input-section.column select {
+  width: 90%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 10px;
+  outline: none;
+}
+
+body {
+  gap: 30px;
+}
+
+h2#convertedValue {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+

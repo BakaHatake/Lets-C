@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/css/api.css" />
-  <title>Weather App</title>
+  <title>API Playground</title>
 </head>
 <body>
+
   <div class="card">
     <h1 class="title">Weather App</h1>
 
@@ -23,6 +24,34 @@
         <p>Humidity: <span id="humidity"></span></p>
         <p>Condition: <span id="condition"></span></p>
       </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h1 class="title">Currency Converter</h1>
+
+    <div class="input-section column" id="xyz">
+      <input id="currAmount" placeholder="Amount" />
+
+      <select id="fromCurr">
+        <option value="INR">INR</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+      </select>
+
+      <select id="toCurr">
+        <option value="USD">USD</option>
+        <option value="INR">INR</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+      </select>
+
+      <button id="convertBtn">Convert</button>
+    </div>
+
+    <div class="result">
+      <h2 id="convertedValue"></h2>
     </div>
   </div>
 

@@ -23,7 +23,8 @@ async function apicall(city) {
     }
 
     const apiKey = "2ffb4b8d71d9477183a95955252411";
-    const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
+    const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&lang=en`;
+
 
     try {
     const res = await fetch(url);
@@ -55,3 +56,54 @@ async function apicall(city) {
     document.getElementById("condition").textContent = "";
 }
 }
+
+let fromSelect = document.getElementById("fromCurr");
+let toSelect = document.getElementById("toCurr");
+let numInput = document.getElementById("currAmount");
+let btn = document.getElementById("convertBtn");
+let enter = document.getElementById("xyz");
+
+async function curr(from, to, num) {
+    if (isNaN(num) || num === "") {
+        document.getElementById("convertedValue").innerHTML = "Invalid Number";
+        return;
+    }
+
+    try {
+        const res = await fetch(
+            `https://api.frankfurter.app/latest?amount=${num}&from=${from}&to=${to}`
+        );
+        const data = await res.json();
+        console.log(data);
+
+        if (!data.rates[to]) {
+            document.getElementById("convertedValue").innerHTML = "Conversion unavailable";
+            return;
+        }
+
+        document.getElementById("convertedValue").innerHTML = data.rates[to];
+
+    } catch (err) {
+        document.getElementById("convertedValue").innerHTML = "ERROR";
+    }
+}
+
+
+btn.addEventListener("click", () => {
+    let from = fromSelect.value;
+    let to = toSelect.value;
+    let num = numInput.value;
+
+    curr(from, to, num);
+});
+
+enter.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === "=") {
+        let from = fromSelect.value;
+        let to = toSelect.value;
+        let num = numInput.value;
+
+        curr(from, to, num);
+        console.log(e.key);
+    }
+});
