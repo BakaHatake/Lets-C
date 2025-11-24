@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #0f1117;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  width: 350px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.input-section {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.input-section input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+.input-section button {
+  padding: 10px 15px;
+  border: none;
+  background: #4a77ff;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.input-section button:hover {
+  background: #365bd1;
+}
+
+.result {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.weather-info p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.weather-info span {
+  font-weight: bold;
+}
