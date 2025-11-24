@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return send_from_directory(HTML_DIR, "landing.html")
+    return send_from_directory(HTML_DIR, "1.html")
 @app.route("/<path:filename>")
 def serve_html(filename):
     return send_from_directory(HTML_DIR, filename)
