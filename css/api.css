@@ -92,5 +92,34 @@ h2#convertedValue {
   font-weight: bold;
   margin-top: 10px;
 }
+@media (max-width: 600px) {
+  body {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    height: auto;
+    align-items: stretch;
+  }
 
+  .card {
+    width: 100%;
+    max-width: 350px;
+    margin: 10px auto;
+    padding: 20px;
+  }
 
+  .input-section {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .input-section input,
+  .input-section select,
+  .input-section button {
+    width: 100%;
+  }
+
+  .result {
+    text-align: center;
+  }
+}
