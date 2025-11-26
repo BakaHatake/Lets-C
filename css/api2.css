@@ -9,7 +9,7 @@ body{
 .cont{
     height: 20rem;
     width: 20rem;
-    border: 1px dotted rgb(203, 203, 203);
+    border: 5px double rgb(203, 203, 203);
 }
  .cont h1{
     display: flex;
