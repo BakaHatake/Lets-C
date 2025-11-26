@@ -1,74 +1,513 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <title>ESP32 Attendance Project - Flow & Pricing</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta charset="UTF-8" />
+  <title>Voice Control Light System – Flow & Cost Comparison</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    body { font-family: Arial, sans-serif; margin: 30px; color: #111; line-height: 1.45; }
-    .page { max-width: 800px; margin: 0 auto 40px; padding: 24px; border: 1px solid #eee; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
-    h1 { font-size: 20px; margin-bottom: 12px; }
-    h2 { font-size: 16px; margin: 18px 0 8px; }
-    ul { margin: 8px 0 16px 20px; }
-    .note { background:#f7f9fc; padding:10px; border-left:4px solid #3b82f6; margin-top:10px; border-radius:4px; }
-    .cost-table { width:100%; border-collapse: collapse; margin-top:10px; }
-    .cost-table td, .cost-table th { padding:8px 10px; border:1px solid #e6e6e6; text-align:left; }
-    .muted { color:#555; font-size:13px; }
-    footer { text-align:center; margin-top:18px; color:#666; font-size:13px; }
-    .small { font-size:13px; color:#333; }
+    :root {
+      --bg: #05060b;
+      --bg-alt: #0f1117;
+      --card: #181b24;
+      --border: #272b38;
+      --accent: #4fd1c5;
+      --accent-soft: rgba(79, 209, 197, 0.12);
+      --text-main: #f5f5f7;
+      --text-muted: #9ca3af;
+      --danger: #fb7185;
+      --safe: #4ade80;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020308 45%, #000 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    .page-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+      background: linear-gradient(90deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.3));
+      backdrop-filter: blur(12px);
+      width: fit-content;
+    }
+
+    .tag span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+      font-weight: 650;
+      letter-spacing: 0.02em;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      max-width: 640px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+      margin-bottom: 22px;
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, rgba(79, 209, 197, 0.06), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.06), transparent 55%),
+                  var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      padding: 16px 18px 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      pointer-events: none;
+      opacity: 0.45;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .chip {
+      font-size: 0.72rem;
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .chip-danger {
+      border-color: rgba(248, 113, 113, 0.7);
+      color: #fecaca;
+      background: rgba(127, 29, 29, 0.22);
+    }
+
+    .chip-safe {
+      border-color: rgba(74, 222, 128, 0.7);
+      color: #bbf7d0;
+      background: rgba(22, 101, 52, 0.23);
+    }
+
+    .flow {
+      font-size: 0.88rem;
+      margin-bottom: 10px;
+      padding: 8px 11px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(90deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.6));
+      border: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    .flow span.label {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .flow span.text {
+      color: #e5e7eb;
+    }
+
+    .section-heading {
+      font-size: 0.86rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin: 10px 0 6px;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0.88rem;
+      color: #e5e7eb;
+    }
+
+    ul li {
+      padding: 4px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    ul li span.name {
+      color: #e5e7eb;
+    }
+
+    ul li span.price {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    .key-points {
+      margin-top: 6px;
+    }
+
+    .key-points li {
+      align-items: flex-start;
+    }
+
+    .key-points li::before {
+      content: "•";
+      margin-right: 6px;
+      color: var(--accent);
+    }
+
+    .total {
+      margin-top: 10px;
+      font-size: 0.86rem;
+      padding: 6px 10px;
+      border-radius: var(--radius-md);
+      background: var(--accent-soft);
+      border: 1px solid rgba(45, 212, 191, 0.45);
+      color: #e0fdfa;
+    }
+
+    .total span.label {
+      font-weight: 600;
+    }
+
+    .comparison {
+      margin-top: 26px;
+      background: var(--bg-alt);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 16px 18px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .comparison-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .comparison-title h2 {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .comparison small {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 6px;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid #1f2933;
+      background: radial-gradient(circle at top left, rgba(79, 209, 197, 0.05), transparent 60%),
+                  #020617;
+    }
+
+    thead {
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    th,
+    td {
+      padding: 8px 10px;
+      text-align: left;
+    }
+
+    th {
+      font-weight: 600;
+      color: #e5e7eb;
+      border-bottom: 1px solid #111827;
+      font-size: 0.8rem;
+    }
+
+    td {
+      border-top: 1px solid rgba(15, 23, 42, 0.7);
+      color: #d1d5db;
+      vertical-align: top;
+    }
+
+    td.label {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      width: 32%;
+    }
+
+    tbody tr:nth-child(even) td {
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+      gap: 4px;
+    }
+
+    .badge span {
+      font-size: 0.7rem;
+    }
+
+    @media (max-width: 640px) {
+      .page-wrap {
+        padding: 18px 10px 30px;
+      }
+      .card {
+        padding: 14px 14px 16px;
+      }
+      th,
+      td {
+        padding: 7px 8px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="page">
-    <h1>Attendance System Using ESP32-CAM — System Flow</h1>
-    <ol>
-      <li>Student appears in front of the ESP32-CAM.</li>
-      <li>ESP32-CAM performs lightweight face detection on-device.</li>
-      <li>ESP32 captures a JPEG image and sends it via HTTP POST to the FastAPI backend over Wi-Fi.</li>
-      <li>FastAPI receives the image, re-runs accurate face detection, and crops the face.</li>
-      <li>Backend generates face embeddings using MobileFaceNet or ArcFace.</li>
-      <li>Backend compares embeddings with stored user embeddings in MongoDB Atlas.</li>
-      <li>Backend identifies the person and records attendance in the database.</li>
-      <li>Optional: Image is uploaded to Cloudinary and the URL is stored in the DB.</li>
-      <li>A dashboard (React hosted on Vercel) displays attendance logs in real time.</li>
-    </ol>
-    <div class="note">
-      <strong>Deployment note:</strong> ESP32 only does detection. All recognition happens on the backend for reliability.
-    </div>
-  </div>
+  <div class="page-wrap">
+    <header>
+      <div class="tag">
+        <span class="dot"></span>
+        Voice-Controlled Light | DDCO Project Reference
+      </div>
+      <h1>Mic vs Voice Module: Flow & Cost Overview</h1>
+      <p class="subtitle">
+        Quick comparison of two implementation flows for a voice-controlled light system.
+        Share this with your team so everyone stops asking the same questions in the group chat.
+      </p>
+    </header>
 
-  <div class="page">
-    <h1>Project Pricing Breakdown (India)</h1>
-    <h2>Hardware Costs</h2>
-    <table class="cost-table">
-      <tr><td>ESP32-CAM (OV2640)</td><td>₹800</td></tr>
-      <tr><td>FTDI USB-to-Serial programmer</td><td>₹200</td></tr>
-      <tr><td>5V 2A Power Adapter</td><td>₹200</td></tr>
-      <tr><td>Jumper wires</td><td>₹50</td></tr>
-      <tr><td>Breadboard / PCB</td><td>₹80–150</td></tr>
-      <tr><td>Enclosure / Case</td><td>₹80–150</td></tr>
-      <tr><td>Optional IR LED / Light</td><td>₹200</td></tr>
-      <tr><td>Optional MicroSD</td><td>₹200</td></tr>
-    </table>
+    <section class="cards">
+      <!-- OPTION A -->
+      <article class="card">
+        <div class="card-header">
+          <h2 class="card-title">Option A: Mic + External Processing + ESP32</h2>
+          <span class="chip chip-danger">Advanced, more setup</span>
+        </div>
 
-    <h2>Typical Totals</h2>
-    <ul>
-      <li><strong>Prototype Build:</strong> ₹1,300–₹1,600</li>
-      <li><strong>Full Deployable Build:</strong> ₹1,900–₹2,200</li>
-    </ul>
+        <div class="flow">
+          <span class="label">Flow</span>
+          <span class="text">
+            Speak → Mic → Laptop / Cloud / Pi does speech → Sends 1/0 to ESP32 → LED / Relay → Light ON/OFF
+          </span>
+        </div>
 
-    <h2>Cloud Costs</h2>
-    <table class="cost-table">
-      <tr><td>Railway (backend hosting)</td><td>₹400/month (optional, for demo)</td></tr>
-      <tr><td>MongoDB Atlas</td><td>Free tier</td></tr>
-      <tr><td>Cloudinary</td><td>Free tier</td></tr>
-      <tr><td>Vercel</td><td>Free tier</td></tr>
-      <tr><td>Google Colab (model training)</td><td>Free</td></tr>
-    </table>
+        <h3 class="section-heading">Parts & approx cost (₹)</h3>
+        <ul>
+          <li>
+            <span class="name">Mic module</span>
+            <span class="price">80 – 200</span>
+          </li>
+          <li>
+            <span class="name">ESP32 dev board</span>
+            <span class="price">250 – 400</span>
+          </li>
+          <li>
+            <span class="name">Relay module (for bulb)</span>
+            <span class="price">80 – 200</span>
+          </li>
+          <li>
+            <span class="name">LED / bulb + holder</span>
+            <span class="price">10 – 200</span>
+          </li>
+          <li>
+            <span class="name">Breadboard + jumper wires</span>
+            <span class="price">100 – 200</span>
+          </li>
+          <li>
+            <span class="name">Laptop / PC / Pi for speech</span>
+            <span class="price">Existing / Pi ≈ 3,000+</span>
+          </li>
+        </ul>
 
-    <div class="note small">
-      <strong>RAM note:</strong> Railway's 512 MB RAM is enough for FastAPI and face recognition for this project.
-    </div>
+        <h3 class="section-heading">Key points</h3>
+        <ul class="key-points">
+          <li>Mic only captures sound, doesn’t understand speech.</li>
+          <li>External system (PC / Pi / cloud) must do speech recognition.</li>
+          <li>More coding and integration: audio, speech-to-text, sending 1/0 to ESP32.</li>
+          <li>Looks more “advanced” but has more failure points in demo.</li>
+        </ul>
+
+        <div class="total">
+          <span class="label">Total project-side cost:</span>
+          &nbsp;≈ 800 – 1,000 (excluding laptop / Pi)
+        </div>
+      </article>
+
+      <!-- OPTION B -->
+      <article class="card">
+        <div class="card-header">
+          <h2 class="card-title">Option B: Voice Recognition Module + ESP32</h2>
+          <span class="chip chip-safe">Simpler, more stable</span>
+        </div>
+
+        <div class="flow">
+          <span class="label">Flow</span>
+          <span class="text">
+            Speak → Voice module recognizes ON/OFF → Sends command to ESP32 → LED / Relay → Light ON/OFF
+          </span>
+        </div>
+
+        <h3 class="section-heading">Parts & approx cost (₹)</h3>
+        <ul>
+          <li>
+            <span class="name">Voice recognition module</span>
+            <span class="price">1,400 – 2,200</span>
+          </li>
+          <li>
+            <span class="name">ESP32 dev board</span>
+            <span class="price">250 – 400</span>
+          </li>
+          <li>
+            <span class="name">Relay module (for bulb)</span>
+            <span class="price">80 – 200</span>
+          </li>
+          <li>
+            <span class="name">LED / bulb + holder</span>
+            <span class="price">10 – 200</span>
+          </li>
+          <li>
+            <span class="name">Breadboard + jumper wires</span>
+            <span class="price">100 – 200</span>
+          </li>
+        </ul>
+
+        <h3 class="section-heading">Key points</h3>
+        <ul class="key-points">
+          <li>Module directly recognizes trained commands like “turn on light” / “turn off light”.</li>
+          <li>No internet and no external PC/Pi needed in final demo.</li>
+          <li>ESP32 only reads command ID and toggles output pin.</li>
+          <li>Simpler wiring and code, more reliable for lab / exam use.</li>
+        </ul>
+
+        <div class="total">
+          <span class="label">Total project cost:</span>
+          &nbsp;≈ 2,000 – 2,500
+        </div>
+      </article>
+    </section>
+
+    <!-- QUICK COMPARISON TABLE -->
+    <section class="comparison">
+      <div class="comparison-title">
+        <h2>Quick Comparison</h2>
+        <div class="badge">
+          <span>↔</span>
+          Summary view for team
+        </div>
+      </div>
+      <small>High-level differences between the two flows.</small>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Point</th>
+            <th>Mic + External Processing</th>
+            <th>Voice Recognition Module</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">Who understands speech?</td>
+            <td>Laptop / PC / Pi / cloud does the speech recognition.</td>
+            <td>Voice module itself matches commands and sends ID.</td>
+          </tr>
+          <tr>
+            <td class="label">Internet / extra device</td>
+            <td>Often needs extra device and sometimes internet.</td>
+            <td>No internet and no external device required in demo.</td>
+          </tr>
+          <tr>
+            <td class="label">Coding effort</td>
+            <td>Higher: audio handling, STT, communication to ESP32.</td>
+            <td>Lower: handle serial/UART input and toggle pins.</td>
+          </tr>
+          <tr>
+            <td class="label">Reliability in demo</td>
+            <td>More components, more chances things break.</td>
+            <td>More self-contained, usually more stable.</td>
+          </tr>
+          <tr>
+            <td class="label">Cost</td>
+            <td>Cheaper parts, but depends on external system.</td>
+            <td>Module costs more, but whole setup is cleaner.</td>
+          </tr>
+          <tr>
+            <td class="label">Best use case</td>
+            <td>Good as a “future upgrade / advanced version”.</td>
+            <td>Good as the main implementation for DDCO project.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
   </div>
 </body>
 </html>
