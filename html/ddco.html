@@ -12,31 +12,18 @@
       color: #e8e8e8;
       padding: 16px;
     }
-
-    h1 {
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-    }
-
-    .sub {
-      font-size: 0.9rem;
-      color: #9aa0aa;
-      margin-bottom: 20px;
-    }
+    h1 { font-size: 1.4rem; margin-bottom: 10px; }
+    .sub { font-size: 0.9rem; color: #9aa0aa; margin-bottom: 20px; }
 
     .card {
       background: #151921;
       border: 1px solid #222831;
       border-radius: 12px;
       padding: 14px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
-    .title {
-      font-size: 1rem;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
+    .title { font-size: 1rem; font-weight: bold; margin-bottom: 8px; }
 
     .tag {
       display: inline-block;
@@ -49,7 +36,7 @@
     .danger { background: #3a1214; color: #ffb3b9; }
     .safe { background: #122f1a; color: #b8ffcd; }
 
-    .flow {
+    .flow, .brain, .output {
       font-size: 0.85rem;
       background: #1c2029;
       padding: 8px;
@@ -67,12 +54,7 @@
       letter-spacing: 0.05em;
     }
 
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 6px;
-    }
-
+    ul { list-style: none; padding: 0; margin: 0 0 6px; }
     li {
       font-size: 0.85rem;
       padding: 4px 0;
@@ -80,27 +62,11 @@
       display: flex;
       justify-content: space-between;
     }
-
     li:last-child { border-bottom: none; }
+    .price { color: #9aa0aa; font-size: 0.8rem; white-space: nowrap; }
 
-    .price {
-      color: #9aa0aa;
-      font-size: 0.8rem;
-      margin-left: 10px;
-      white-space: nowrap;
-    }
-
-    .points li {
-      border: none;
-      display: block;
-      padding: 4px 0;
-      font-size: 0.85rem;
-    }
-
-    .points li::before {
-      content: "• ";
-      color: #4fd1c5;
-    }
+    .points li { border: none; display: block; padding: 4px 0; }
+    .points li::before { content: "• "; color: #4fd1c5; }
 
     .total {
       background: #113131;
@@ -120,39 +86,20 @@
       margin-top: 20px;
     }
 
-    .table h2 {
-      font-size: 1rem;
-      margin-bottom: 8px;
-    }
-
-    .row {
-      font-size: 0.85rem;
-      padding: 8px 0;
-      border-bottom: 1px solid #1f232b;
-    }
-
+    .table h2 { font-size: 1rem; margin-bottom: 8px; }
+    .row { font-size: 0.85rem; padding: 8px 0; border-bottom: 1px solid #1f232b; }
     .row:last-child { border-bottom: none; }
-
-    .label {
-      color: #9aa0aa;
-      display: block;
-      margin-bottom: 3px;
-      font-size: 0.78rem;
-    }
+    .label { color: #9aa0aa; display: block; margin-bottom: 3px; font-size: 0.78rem; }
 
     @media (min-width: 700px) {
-      body {
-        max-width: 600px;
-        margin: auto;
-        padding: 20px;
-      }
+      body { max-width: 600px; margin: auto; padding: 20px; }
     }
   </style>
 </head>
 <body>
 
   <h1>Mic vs Voice Module</h1>
-  <p class="sub">Quick comparison for the voice-controlled light project.</p>
+  <p class="sub">Comparison for the voice-controlled light project.</p>
 
   <!-- OPTION A -->
   <div class="card">
@@ -161,6 +108,16 @@
 
     <div class="flow">
       Speak → Mic → Laptop/Cloud/Pi → Sends 1/0 to ESP32 → Light ON/OFF
+    </div>
+
+    <div class="brain">
+      <b>Brain Location:</b><br>
+      Laptop / Cloud / Raspberry Pi does speech recognition.
+    </div>
+
+    <div class="output">
+      <b>Output:</b><br>
+      LED (low voltage) or real bulb (with relay).
     </div>
 
     <div class="section">Parts & Cost (₹)</div>
@@ -175,13 +132,14 @@
 
     <div class="section">Key Points</div>
     <ul class="points">
-      <li>Mic doesn’t understand speech</li>
-      <li>Needs external device + maybe internet</li>
-      <li>More coding and setup</li>
-      <li>“Advanced” but risky for demo</li>
+      <li>Mic only hears sound, doesn't understand speech</li>
+      <li>Needs external processing + maybe internet</li>
+      <li>More coding + data handling</li>
+      <li>More failure points during demo</li>
+      <li>Good as “advanced / future upgrade”</li>
     </ul>
 
-    <div class="total">Total cost ≈ ₹800 – ₹1,000 (excluding laptop/Pi)</div>
+    <div class="total">Total ≈ ₹800 – ₹1,000 (excluding laptop/Pi)</div>
   </div>
 
   <!-- OPTION B -->
@@ -191,6 +149,16 @@
 
     <div class="flow">
       Speak → Module recognizes ON/OFF → Sends to ESP32 → Light ON/OFF
+    </div>
+
+    <div class="brain">
+      <b>Brain Location:</b><br>
+      Inside the voice module (built-in recognition).
+    </div>
+
+    <div class="output">
+      <b>Output:</b><br>
+      LED or real bulb with relay.
     </div>
 
     <div class="section">Parts & Cost (₹)</div>
@@ -204,13 +172,14 @@
 
     <div class="section">Key Points</div>
     <ul class="points">
-      <li>Understands trained commands</li>
-      <li>No internet or laptop needed</li>
-      <li>Simple wiring + code</li>
-      <li>More reliable for demo</li>
+      <li>Understands trained ON/OFF commands</li>
+      <li>No laptop or internet needed</li>
+      <li>Simple wiring + simple code</li>
+      <li>More reliable in final demo</li>
+      <li>Clean, self-contained setup</li>
     </ul>
 
-    <div class="total">Total cost ≈ ₹2,000 – ₹2,500</div>
+    <div class="total">Total ≈ ₹2,000 – ₹2,500</div>
   </div>
 
   <!-- TABLE -->
@@ -218,27 +187,38 @@
     <h2>Quick Comparison</h2>
 
     <div class="row">
-      <span class="label">Speech understanding</span>
-      Mic setup: External device<br>
-      Module setup: Built-in
+      <span class="label">Who understands speech?</span>
+      Mic: External device<br>
+      Module: Built-in
     </div>
 
     <div class="row">
-      <span class="label">Internet / extra device</span>
-      Mic: Often yes<br>
-      Module: No
+      <span class="label">Extra device needed</span>
+      Mic: Laptop/Cloud/Pi<br>
+      Module: None
     </div>
 
     <div class="row">
-      <span class="label">Reliability</span>
+      <span class="label">Internet</span>
+      Mic: Sometimes required<br>
+      Module: Not required
+    </div>
+
+    <div class="row">
+      <span class="label">Demo Reliability</span>
       Mic: Risky<br>
       Module: Stable
     </div>
 
     <div class="row">
+      <span class="label">Output options</span>
+      Both support LED or bulb (with relay)
+    </div>
+
+    <div class="row">
       <span class="label">Cost</span>
-      Mic: Cheaper parts<br>
-      Module: Costlier module
+      Mic setup cheaper parts<br>
+      Module setup costlier module
     </div>
 
   </div>
