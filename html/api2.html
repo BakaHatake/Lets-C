@@ -22,6 +22,34 @@
           </div>
        </div>
     </div>
+
+    <div class="cont">
+      <h1>💲converter💲</h1>  
+      <div class="inputsec">
+        <div class="inn">
+        <input type="text" placeholder="Amount" id="amount">
+        </div>
+        <!-- <h2>FROM</h2> -->
+        <select id="fromCurr">
+        <option value="INR">INR</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+      </select>
+       <!-- <H2>TO</H2> -->
+      <select id="toCurr">
+        <option value="USD">USD</option>
+        <option value="INR">INR</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+      </select><br>
+
+      <button id="convertbtn">Convert</button>
+      </div>
+      <div class="result">
+        <h2 id="convertedvalue"></h2>
+      </div>
+    </div>
     <script src="/js/api2.js"></script>
 </body>
 </html>
