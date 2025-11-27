@@ -54,3 +54,38 @@ catch(error) {
       document.getElementById("cond").textContent="";
 }
 }
+
+
+
+let fromselect=document.getElementById("fromCurr");
+let toselect=document.getElementById("toCurr");
+let number=document.getElementById("amount");
+let val=document.getElementById("convertbtn");
+
+async function cum(from,to,num){
+    if(isNaN(num)|| num===""){
+        document.getElementById("convertedvalue").innerHTML="INVALID NUM!!!";
+    return;
+}
+
+try{
+    const res= await fetch( `https://api.frankfurter.app/latest?amount=${num}&from=${from}&to=${to}`);
+    const data= await res.json();
+
+    if(!data.rates[to]){
+        document.getElementById("convertedvalue").innerHTML="Conversion unavailable";
+        return
+    }
+     document.getElementById("convertedvalue").innerHTML=data.rates[to];
+} catch(err) {
+    document.getElementById("convertedvalue").innerHTML="ERROR";
+}  
+}
+
+val.addEventListener("click", () => {
+    let from =fromselect.value;
+    let to=toselect.value;
+    let num=number.value;
+
+    cum(from,to,num);
+ });

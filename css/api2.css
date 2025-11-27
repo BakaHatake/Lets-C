@@ -8,7 +8,7 @@ body{
     gap: 100px;
 }
 .cont{
-    height: 20rem;
+    height: 22rem;
     width: 20rem;
     border: 5px double rgb(203, 203, 203);
 }
@@ -101,5 +101,4 @@ body{
     margin-bottom: 10px;
     outline: none;
     margin-left: 58px;
-
 }
