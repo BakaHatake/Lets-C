@@ -8,8 +8,7 @@ api.addEventListener('click', () => {
  });
 
  cityName.addEventListener('keydown', e => {
-    let city = cityInput.value;
-
+    let city = cityName.value;
     if (e.key === "=" || e.key === "Enter") {
         console.log(e.key);
         apicall(city);
@@ -32,18 +31,18 @@ try{
         document.getElementById("city").textContent="try another city";
 
         document.getElementById("temp").textContent="";
-        document.getElementById("humidity").textContent="";
-        document.getElementById("condition").textContent="";
+        document.getElementById("hum").textContent="";
+        document.getElementById("cond").textContent="";
         return
     }
     document.getElementById("city").textContent=
     data.location.name+" "+
     data.location.region+" "+
-    data.location.countary;
+    data.location.country;
 
     document.getElementById("temp").textContent = data.current.temp_c + "°C";
-    document.getElementById("humidity").textContent = data.current.humidity + "%";
-    document.getElementById("condition").textContent = data.current.condition.text;
+    document.getElementById("hum").textContent = data.current.humidity + "%";
+    document.getElementById("cond").textContent = data.current.condition.text;
 } 
 catch(error) {
     console.log("something happen to api",error)
@@ -51,7 +50,7 @@ catch(error) {
       document.getElementById("city").textContent="try another city";
 
       document.getElementById("temp").textContent="";
-      document.getElementById("humidity").textContent="";
-      document.getElementById("condition").textContent="";
+      document.getElementById("hum").textContent="";
+      document.getElementById("cond").textContent="";
 }
 }
